@@ -16,10 +16,63 @@
             color: #555;
         }
 
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .logo-section {
+            flex: 0 0 auto;
+        }
+
+        .logo-section img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .company-info {
+            text-align: right;
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .info-box {
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .invoice-details, .instructor-details {
+            flex: 1;
+        }
+
+        .instructor-details {
+            text-align: right;
+        }
+
+        .bold-label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .info-value {
+            display: block;
+            margin-bottom: 5px;
+        }
+
         .invoice-box table {
             width: 100%;
             line-height: inherit;
             text-align: left;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         .invoice-box table td {
@@ -27,32 +80,10 @@
             vertical-align: top;
         }
 
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
-        }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
         .invoice-box table tr.heading td {
             background: #eee;
             border-bottom: 1px solid #ddd;
             font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
         }
 
         .invoice-box table tr.item td {
@@ -63,84 +94,80 @@
             border-bottom: none;
         }
 
-        .invoice-box table tr.total td:nth-child(2) {
+        .invoice-box table tr.total td {
             border-top: 2px solid #eee;
             font-weight: bold;
         }
 
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
+        .invoice-box table tr.heading td:nth-child(1),
+        .invoice-box table tr.item td:nth-child(1) {
+            width: 5%;
         }
 
-        /** RTL **/
-        .invoice-box.rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        .invoice-box table tr.heading td:nth-child(2),
+        .invoice-box table tr.item td:nth-child(2) {
+            width: 40%;
         }
 
-        .invoice-box.rtl table {
+        .invoice-box table tr.heading td:nth-child(3),
+        .invoice-box table tr.item td:nth-child(3) {
+            width: 15%;
+            text-align: center;
+        }
+
+        .invoice-box table tr.heading td:nth-child(4),
+        .invoice-box table tr.item td:nth-child(4),
+        .invoice-box table tr.heading td:nth-child(5),
+        .invoice-box table tr.item td:nth-child(5) {
+            width: 20%;
             text-align: right;
         }
 
-        .invoice-box.rtl table tr td:nth-child(2) {
-            text-align: left;
+        .notes-section {
+            margin-top: 30px;
+        }
+
+        .payment-message {
+            margin-top: 20px;
+            font-style: italic;
         }
     </style>
 </head>
 
 <body>
     <div class="invoice-box">
+        <div class="header-section">
+            <div class="logo-section">
+                <img src="/api/placeholder/100/100" alt="RevoU Logo" />
+            </div>
+            <div class="company-info">
+                PT REVOLUSI CITA EDUKASI<br />
+                Menara Rajawali, Ground Floor, Jl. DR. Ide Anak Agung Gde Agung,<br />
+                RT.5/RW.2, Kuningan, Kuningan Tim., Jakarta, Daerah Khusus Ibukota Jakarta 12950
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="invoice-details">
+                <span class="bold-label">Invoice #</span>
+                <span class="info-value">{{Invoice number}}</span>
+                <span class="bold-label">Date</span>
+                <span class="info-value">{{Invoice date}}</span>
+                <span class="bold-label">Reference</span>
+                <span class="info-value">{{Invoice references}}</span>
+            </div>
+            <div class="instructor-details">
+                <span class="bold-label">Instructor Invoice</span>
+                <span class="info-value">{{Instructor Name}}</span>
+                <span class="info-value">{{Email}}</span>
+                <span class="info-value">{{NPWP}}</span>
+                <span class="info-value">{{KTP (ID)}}</span>
+            </div>
+        </div>
+
         <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td class="title">
-                                <img src="https://cdn.prod.website-files.com/61af164800e38c4f53c60b4e/61af164800e38c11efc60b6d_RevoU.svg" style="width: 100%; max-width: 300px" />
-                            </td>
-                            <td>
-                                Invoice #: {{Invoice number}}<br />
-                                Created: {{Invoice date}}<br />
-                                Reference: {{Invoice references}}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
-                                PT REVOLUSI CITA EDUKASI<br />
-                                Menara Rajawali, Ground Floor, Jl. DR. Ide Anak Agung Gde Agung,<br />
-                                RT.5/RW.2, Kuningan, Kuningan Tim., Jakarta, Daerah Khusus Ibukota Jakarta 12950
-                            </td>
-                            <td>
-                                Instructor Invoice<br />
-                                {{Instructor Name}}<br />
-                                {{Email}}<br />
-                                {{NPWP}}<br />
-                                {{KTP (ID)}}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
             <tr class="heading">
-                <td>Item</td>
+                <td>No</td>
                 <td>Description</td>
                 <td>Quantity</td>
                 <td>Price</td>
@@ -180,10 +207,21 @@
             </tr>
 
             <tr class="total">
-                <td></td>
+                <td colspan="4"></td>
                 <td>Total: {{Total}}</td>
             </tr>
         </table>
+
+        <div class="notes-section">
+            <span class="bold-label">Notes</span>
+            <span class="info-value">{{Bank}}</span>
+            <span class="info-value">{{Bank Account Name}}</span>
+            <span class="info-value">{{Account Number}}</span>
+        </div>
+
+        <div class="payment-message">
+            Please transfer the above Nett amount in full (as stated in the Total Amount Column) by bank transfer within 14 days.
+        </div>
     </div>
 </body>
 </html>
