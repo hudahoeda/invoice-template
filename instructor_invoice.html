@@ -259,37 +259,37 @@
                 <td>1</td>
                 <td>{{ $json['Items Base Compensation 1'] }}</td>
                 <td>{{ $json.Q1 }}</td>
-                <td>{{ $json['Fee 1'] }}</td>
-                <td>{{ $json['Total 1'] }}</td>
+                <td data-price="{{ $json['Fee 1'] }}">{{ $json['Fee 1'] }}</td>
+                <td data-amount="{{ $json['Total 1'] }}">{{ $json['Total 1'] }}</td>
             </tr>
 
             <tr class="item">
                 <td>2</td>
                 <td>{{ $json['Items Base Compensation 2'] }}</td>
                 <td>{{ $json.Q2 }}</td>
-                <td>{{ $json['Fee 2'] }}</td>
-                <td>{{ $json['Total 2'] }}</td>
+                <td data-price="{{ $json['Fee 2'] }}">{{ $json['Fee 2'] }}</td>
+                <td data-amount="{{ $json['Total 2'] }}">{{ $json['Total 2'] }}</td>
             </tr>
 
             <tr class="item">
                 <td>3</td>
                 <td>{{ $json['Items Base Compensation 3'] }}</td>
                 <td>{{ $json.Q3 }}</td>
-                <td>{{ $json['Fee 3'] }}</td>
-                <td>{{ $json['Total 3'] }}</td>
+                <td data-price="{{ $json['Fee 3'] }}">{{ $json['Fee 3'] }}</td>
+                <td data-amount="{{ $json['Total 3'] }}">{{ $json['Total 3'] }}</td>
             </tr>
 
             <tr class="item last">
                 <td>4</td>
                 <td>{{ $json['Items Base Compensation 4'] }}</td>
                 <td>{{ $json.Q4 }}</td>
-                <td>{{ $json['Fee 4'] }}</td>
-                <td>{{ $json['Total 4'] }}</td>
+                <td data-price="{{ $json['Fee 4'] }}">{{ $json['Fee 4'] }}</td>
+                <td data-amount="{{ $json['Total 4'] }}">{{ $json['Total 4'] }}</td>
             </tr>
 
             <tr class="total">
                 <td colspan="4"></td>
-                <td>Total: {{ $json.Total }}</td>
+                <td data-amount="{{ $json.Total }}">Total: {{ $json.Total }}</td>
             </tr>
         </table>
 
