@@ -185,6 +185,34 @@
         .mt-2 { margin-top: 20px; }
         .mb-2 { margin-bottom: 20px; }
     </style>
+    <script>
+        function formatIDR(number) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(number).replace('IDR', 'Rp');
+        }
+
+        window.onload = function() {
+            // Format all price cells
+            document.querySelectorAll('td[data-price]').forEach(cell => {
+                const price = parseFloat(cell.getAttribute('data-price'));
+                if (!isNaN(price)) {
+                    cell.textContent = formatIDR(price);
+                }
+            });
+
+            // Format all amount cells
+            document.querySelectorAll('td[data-amount]').forEach(cell => {
+                const amount = parseFloat(cell.getAttribute('data-amount'));
+                if (!isNaN(amount)) {
+                    cell.textContent = formatIDR(amount);
+                }
+            });
+        };
+    </script>
 </head>
 
 <body>
@@ -203,18 +231,18 @@
         <div class="info-box">
             <div class="invoice-details">
                 <span class="bold-label">Invoice #</span>
-                <span class="info-value">(Invoice number)</span>
+                <span class="info-value">{{ $json['Invoice Number'] }}</span>
                 <span class="bold-label">Date</span>
-                <span class="info-value">(Invoice date)</span>
+                <span class="info-value">{{ $json['Invoice Date'] }}</span>
                 <span class="bold-label">Reference</span>
-                <span class="info-value">(Invoice references)</span>
+                <span class="info-value">{{ $json['Invoice References'] }}</span>
             </div>
             <div class="instructor-details">
                 <span class="bold-label">Instructor Invoice</span>
-                <span class="info-value">(Instructor Name)</span>
-                <span class="info-value">(Email)</span>
-                <span class="info-value">(NPWP)</span>
-                <span class="info-value">(KTP (ID))</span>
+                <span class="info-value">{{ $json['Instructor Name'] }}</span>
+                <span class="info-value">{{ $json.Email }}</span>
+                <span class="info-value">{{ $json.NPWP }}</span>
+                <span class="info-value">{{ $json['KTP (ID)'] }}</span>
             </div>
         </div>
 
@@ -229,47 +257,47 @@
 
             <tr class="item">
                 <td>1</td>
-                <td>(Items Base Compensation 1)</td>
-                <td>(Q1)</td>
-                <td>(Fee 1)</td>
-                <td>(Total 1)</td>
+                <td>{{ $json['Items Base Compensation 1'] }}</td>
+                <td>{{ $json.Q1 }}</td>
+                <td>{{ $json['Fee 1'] }}</td>
+                <td>{{ $json['Total 1'] }}</td>
             </tr>
 
             <tr class="item">
                 <td>2</td>
-                <td>(Items Base Compensation 2)</td>
-                <td>(Q2)</td>
-                <td>(Fee 2)</td>
-                <td>(Total 2)</td>
+                <td>{{ $json['Items Base Compensation 2'] }}</td>
+                <td>{{ $json.Q2 }}</td>
+                <td>{{ $json['Fee 2'] }}</td>
+                <td>{{ $json['Total 2'] }}</td>
             </tr>
 
             <tr class="item">
                 <td>3</td>
-                <td>(Items Base Compensation 3)</td>
-                <td>(Q3)</td>
-                <td>(Fee 3)</td>
-                <td>(Total 3)</td>
+                <td>{{ $json['Items Base Compensation 3'] }}</td>
+                <td>{{ $json.Q3 }}</td>
+                <td>{{ $json['Fee 3'] }}</td>
+                <td>{{ $json['Total 3'] }}</td>
             </tr>
 
             <tr class="item last">
                 <td>4</td>
-                <td>(Items Base Compensation 4)</td>
-                <td>(Q4)</td>
-                <td>(Fee 4)</td>
-                <td>(Total 4)</td>
+                <td>{{ $json['Items Base Compensation 4'] }}</td>
+                <td>{{ $json.Q4 }}</td>
+                <td>{{ $json['Fee 4'] }}</td>
+                <td>{{ $json['Total 4'] }}</td>
             </tr>
 
             <tr class="total">
                 <td colspan="4"></td>
-                <td>Total: (Total)</td>
+                <td>Total: {{ $json.Total }}</td>
             </tr>
         </table>
 
         <div class="notes-section">
             <span class="bold-label">Notes</span>
-            <span class="info-value">(Bank)</span>
-            <span class="info-value">(Bank Account Name)</span>
-            <span class="info-value">(Account Number)</span>
+            <span class="info-value">{{ $json.Bank }}</span>
+            <span class="info-value">{{ $json['Bank Account Name'] }}</span>
+            <span class="info-value">{{ $json['Account Number'] }}</span>
         </div>
 
         <div class="payment-message">
