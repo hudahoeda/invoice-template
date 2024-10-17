@@ -3,24 +3,56 @@
 <head>
     <meta charset="utf-8" />
     <title>Instructor Invoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Reset and page setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+        }
+
+        /* A4 size setup */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            background: #FFFFFF;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .invoice-box {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 30px;
+            }
+        }
+
         .invoice-box {
-            max-width: 800px;
-            margin: auto;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
             padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            background: white;
             color: #555;
+            font-size: 14px;
+            line-height: 22px;
         }
 
         .header-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .logo-section {
@@ -37,13 +69,16 @@
             text-align: right;
             flex: 1;
             padding-left: 20px;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         .info-box {
             border: 1px solid #ddd;
             background-color: #f8f8f8;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
         }
@@ -57,14 +92,17 @@
         }
 
         .bold-label {
-            font-weight: bold;
+            font-weight: 600;
             display: block;
             margin-top: 10px;
+            font-size: 13px;
         }
 
         .info-value {
             display: block;
             margin-bottom: 5px;
+            font-weight: 400;
+            font-size: 13px;
         }
 
         .invoice-box table {
@@ -72,18 +110,20 @@
             line-height: inherit;
             text-align: left;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .invoice-box table td {
-            padding: 5px;
+            padding: 8px;
             vertical-align: top;
+            font-weight: 400;
+            font-size: 13px;
         }
 
         .invoice-box table tr.heading td {
             background: #eee;
             border-bottom: 1px solid #ddd;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .invoice-box table tr.item td {
@@ -96,7 +136,7 @@
 
         .invoice-box table tr.total td {
             border-top: 2px solid #eee;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .invoice-box table tr.heading td:nth-child(1),
@@ -130,7 +170,13 @@
         .payment-message {
             margin-top: 20px;
             font-style: italic;
+            font-weight: 400;
+            font-size: 13px;
         }
+
+        /* Spacing utilities */
+        .mt-2 { margin-top: 20px; }
+        .mb-2 { margin-bottom: 20px; }
     </style>
 </head>
 
@@ -138,10 +184,10 @@
     <div class="invoice-box">
         <div class="header-section">
             <div class="logo-section">
-                <img src="/api/placeholder/100/100" alt="RevoU Logo" />
+                <img src="https://cdn.prod.website-files.com/61af164800e38c4f53c60b4e/61af164800e38c11efc60b6d_RevoU.svg" alt="RevoU Logo" />
             </div>
             <div class="company-info">
-                PT REVOLUSI CITA EDUKASI<br />
+                ,<span class="bold-label">PT REVOLUSI CITA EDUKASI</span>
                 Menara Rajawali, Ground Floor, Jl. DR. Ide Anak Agung Gde Agung,<br />
                 RT.5/RW.2, Kuningan, Kuningan Tim., Jakarta, Daerah Khusus Ibukota Jakarta 12950
             </div>
