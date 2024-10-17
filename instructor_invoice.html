@@ -111,6 +111,7 @@
             text-align: left;
             border-collapse: collapse;
             margin-bottom: 30px;
+            table-layout: fixed; /* Enforce fixed table layout */
         }
 
         .invoice-box table td {
@@ -137,6 +138,10 @@
         .invoice-box table tr.total td {
             border-top: 2px solid #eee;
             font-weight: 600;
+        }
+
+        .invoice-box table td:last-child {
+            text-align: right; /* Ensure amounts are right-aligned */
         }
 
         .invoice-box table tr.heading td:nth-child(1),
@@ -222,7 +227,7 @@
                 <img src="https://cdn.prod.website-files.com/61af164800e38c4f53c60b4e/61af164800e38c11efc60b6d_RevoU.svg" alt="RevoU Logo" />
             </div>
             <div class="company-info">
-                ,<span class="company-name">PT REVOLUSI CITA EDUKASI</span>
+                <span class="company-name">PT REVOLUSI CITA EDUKASI</span>
                 Menara Rajawali, Ground Floor, Jl. DR. Ide Anak Agung Gde Agung,<br />
                 RT.5/RW.2, Kuningan, Kuningan Tim., Jakarta, Daerah Khusus Ibukota Jakarta 12950
             </div>
@@ -288,8 +293,8 @@
             </tr>
 
             <tr class="total">
-                <td colspan="4"></td>
-                <td data-amount="{{ $json.Total }}">Total: {{ $json.Total }}</td>
+                <td colspan="4" style="text-align: right; padding-right: 10px; font-weight: bold;">Total:</td>
+                <td style="text-align: right; font-weight: bold;" data-amount="{{ $json.Total }}">{{ $json.Total }}</td>
             </tr>
         </table>
 
